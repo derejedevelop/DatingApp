@@ -10,7 +10,7 @@ export class Value2Component implements OnInit {
 
   newValue = '';
   url = '';
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.url = 'http://localhost:5000/api/values';
   }
 

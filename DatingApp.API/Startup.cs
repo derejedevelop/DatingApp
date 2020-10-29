@@ -44,9 +44,10 @@ namespace DatingApp.API
             });
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
-            services.AddAutoMapper(typeof(DatingRepository).Assembly);
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer( options => {
                 options.TokenValidationParameters = new TokenValidationParameters 

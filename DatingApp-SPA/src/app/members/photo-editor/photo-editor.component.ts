@@ -56,6 +56,12 @@ export class PhotoEditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        if(photo.isMain)
+        {
+          this.atuhService.changeMemberPhoto(photo.url);
+          this.atuhService.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.atuhService.currentUser));
+        }
       }
     };
   }
